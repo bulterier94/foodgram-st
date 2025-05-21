@@ -5,8 +5,6 @@ import imghdr
 from rest_framework import serializers
 from django.core.files.base import ContentFile
 from django.utils.translation import gettext_lazy as _
-from django.core.files.storage import default_storage
-from django.db import transaction
 
 
 class Base64ImageField(serializers.ImageField):
@@ -31,27 +29,6 @@ class Base64ImageField(serializers.ImageField):
     def __init__(self, *args, **kwargs):
         self.max_size = kwargs.pop('max_size', self.DEFAULT_MAX_SIZE)
         super().__init__(*args, **kwargs)
-
-    # def _delete_old_file(self):
-    #     if not (self.parent and hasattr(self.parent, 'instance')):
-    #         return
-
-    #     instance = self.parent.instance
-    #     if not instance or not instance.pk:
-    #         return
-
-    #     try:
-    #         old_file = getattr(instance, self.field_name)
-    #         if old_file and old_file.name:
-    #             current_file = self.parent.initial_data.get(self.field_name)
-
-    #             if not current_file or old_file.name != getattr(current_file, 'name', ''):
-    #                 if default_storage.exists(old_file.name):
-    #                     old_file.delete(save=False)
-    #     except Exception as e:
-    #         import logging
-    #         logger = logging.getLogger(__name__)
-    #         logger.exception(f"Error deleting old file: {str(e)}")
 
     def to_internal_value(self, data):
         if data is None:
@@ -89,7 +66,5 @@ class Base64ImageField(serializers.ImageField):
 
             except (ValueError, AttributeError, TypeError, binascii.Error):
                 self.fail('invalid')
-
-        # self._delete_old_file()
 
         return super().to_internal_value(data)

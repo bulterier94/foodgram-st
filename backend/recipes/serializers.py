@@ -1,6 +1,4 @@
 from rest_framework import serializers
-from django.db import transaction
-from django.core.files.storage import default_storage
 
 from .models import Recipe, IngredientInRecipe
 from shopping_cart.models import ShoppingCart

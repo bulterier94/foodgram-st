@@ -68,7 +68,6 @@ class ShoppingCartCreateDeleteView(
 class ShoppingCartDownloadPDF(APIView):
     permission_classes = [IsAuthenticated,]
 
-
     def get(self, request):
         shopping_cart = ShoppingCart.objects.filter(user=request.user)
 
@@ -88,7 +87,6 @@ class ShoppingCartDownloadPDF(APIView):
 
         top_margin = height - 50
         left_margin = 50
-        right_margin = width - 50
         bottom_margin = 50
 
         y_position = top_margin
