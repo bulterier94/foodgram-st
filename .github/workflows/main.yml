@@ -42,7 +42,7 @@ jobs:
         with:
           context: ./frontend/
           push: true
-          tags: bulterier94/foodgram_frontend:latest 
+          tags: bulterier04/foodgram_frontend:latest 
 
   build_backend_and_push_to_docker_hub:
     name: Build and push Docker frontend image to DockerHub
@@ -63,4 +63,4 @@ jobs:
         with:
           context: ./backend/
           push: true
-          tags: bulterier94/foodgram_backend:latest
+          tags: bulterier04/foodgram_backend:latest
