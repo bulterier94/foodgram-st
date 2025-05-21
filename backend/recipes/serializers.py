@@ -97,48 +97,36 @@ class RecipeWriteBaseSerializer(serializers.ModelSerializer):
         ]
 
     def validate_ingredients(self, value):
-        exceptions = []
 
-        if not value:
-            exceptions.append('Добавьте хотя бы 1 ингредиент.')
+        formatted_ingredients = []
+        for ingredient in value:
+            try:
+                formatted_ingredients.append({
+                    "id": ingredient["id"],
+                    "amount": int(ingredient["amount"]),
+                })
+            except (KeyError, ValueError):
+                raise serializers.ValidationError(
+                    "Неверный формат ингредиента. Ожидается {id, amount}."
+                )
 
-        ingredient_ids = [ingredient['id'] for ingredient in value]
+        if not formatted_ingredients:
+            raise serializers.ValidationError("Добавьте хотя бы 1 ингредиент.")
+
+        ingredient_ids = [
+            ingredient["id"] for ingredient in formatted_ingredients
+        ]
         existing_ids = set(Ingredient.objects.filter(
             id__in=ingredient_ids
         ).values_list('id', flat=True))
 
-        non_existent_ingredients = [
-            str(i) for i in ingredient_ids if i not in existing_ids
-        ]
-
-        if non_existent_ingredients:
-            if len(non_existent_ingredients) == 1:
-                exceptions.append(
-                    f'Несуществующий ингредиент с id: {non_existent_ingredients[0]}.'
-                )
-            else:
-                exceptions.append(
-                    f'Несуществующие ингредиенты с id: {', '.join(non_existent_ingredients)}.'
-                )
-
-        try:
-            if any(ingredient['amount'] < 1 for ingredient in value):
-                exceptions.append(
-                    'Количество ингредиента должно быть больше 1.'
-                )
-        except Exception:
-            exceptions.append(
-                'Количество ингредиента передано в некорректном формате.'
+        non_existent = set(ingredient_ids) - existing_ids
+        if non_existent:
+            raise serializers.ValidationError(
+                f"Ингредиенты с id {non_existent} не найдены."
             )
 
-        unique_ids = set(ingredient['id'] for ingredient in value)
-        if len(unique_ids) != len(value):
-            exceptions.append('Ингредиенты не должны дублироваться.')
-
-        if exceptions:
-            raise serializers.ValidationError(exceptions)
-
-        return value
+        return formatted_ingredients
 
 
 class RecipeCreateSerializer(RecipeWriteBaseSerializer):

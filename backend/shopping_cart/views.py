@@ -1,3 +1,5 @@
+import os
+
 from io import BytesIO
 
 from reportlab.lib.pagesizes import letter
@@ -14,6 +16,8 @@ from rest_framework.response import Response
 
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
+from django.conf import settings
+
 
 from .models import ShoppingCart
 from recipes.models import Recipe
@@ -74,11 +78,13 @@ class ShoppingCartDownloadPDF(APIView):
         if not shopping_cart.exists():
             raise ValidationError({'detail': 'Ваш список покупок пуст.'})
 
+        font_path = settings.BASE_DIR / 'static_backend/fonts/DejaVuSans.ttf'
+
         try:
-            pdfmetrics.registerFont(TTFont('DejaVuSans', 'DejaVuSans.ttf'))
+            pdfmetrics.registerFont(TTFont('DejaVuSans', font_path))
         except Exception:
             return HttpResponse(
-                "Файл шрифта DejaVuSans.ttf не найден", status=500
+                f"{font_path} Файл шрифта DejaVuSans.ttf не найден.", status=500
             )
 
         buffer = BytesIO()
