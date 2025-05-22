@@ -115,47 +115,47 @@ docker compose down -v
 
 - Пользователь может **создать свой рецепт**:
 
-![image](https://github.com/user-attachments/assets/27ee5d56-3658-4928-b866-ad6783c03098)
+![image](https://github.com/user-attachments/assets/431fb0b4-b983-4e89-8e8f-33847b06ce0c)
 
 - Пользователь **находится на главной странице**. Он **видит список всех рецептов**:
 
-![image](https://github.com/user-attachments/assets/fe83b850-77d0-4bd2-8738-bb74434caebc)
+![image](https://github.com/user-attachments/assets/987d620c-0be9-4ddf-90d7-b6fb795c5bc7)
 
 - Пользователь может **зайти на страницу рецепта**:
 
-![image](https://github.com/user-attachments/assets/d120ed81-db95-4af2-98d8-52bacd649461)
+![image](https://github.com/user-attachments/assets/a1ec72b8-5e73-45c2-b2aa-e87d2efc2311)
 
 - Пользователь может **редактировать рецепт**, если он принадлежит пользователю:
 
-![image](https://github.com/user-attachments/assets/2a57f96d-1bd5-483f-9069-2a97cf545ffa)
+![image](https://github.com/user-attachments/assets/c0ac468c-2ea7-49cd-8f90-0fc45b0b940b)
 
 - Пользователь может **добавить рецепт в избранное** и **удалить его оттуда**:
 
-![image](https://github.com/user-attachments/assets/d9671330-ac14-4980-80b0-dfdc5c444abb)
+![image](https://github.com/user-attachments/assets/40974b08-debf-4973-872a-17274f7ea9a7)
 
 - Пользователь может **добавить рецепт в список покупок** и **удалить его оттуда**:
 
-![image](https://github.com/user-attachments/assets/74c79346-b5a3-4fd8-b74c-07f4439b18e6)
+![image](https://github.com/user-attachments/assets/c14eecbd-dd6f-4e41-b085-e524d1ec4816)
 
 - Пользователь может **скопировать прямую ссылку на рецепт**:
 
-![image](https://github.com/user-attachments/assets/c75d92ce-7b89-4c79-b44e-5cd758da7b04)
+![image](https://github.com/user-attachments/assets/d0ffddcb-d410-42d7-8737-687d668db014)
 
 - Пользователь может **зайти на рецепт другого пользователя** и **подписаться на автора**, а также **отписаться от него**:
 
-![image](https://github.com/user-attachments/assets/916fa208-055b-48a0-a2e4-6b1c030c5609)
+![image](https://github.com/user-attachments/assets/245b91b9-9f2d-4b7f-985f-408536f6a10c)
 
 - Пользователь может **посмотреть список своих подписок**:
 
-![image](https://github.com/user-attachments/assets/378c4446-cd62-40e4-8b46-860fd7d25434)
+![image](https://github.com/user-attachments/assets/f6e405a0-bd82-4d34-ae35-d099a936323c)
 
 - Пользователь может **посмотреть свой список избранных рецептов**:
 
-![image](https://github.com/user-attachments/assets/0330aa42-dbda-4574-b07c-b6111e9fb6df)
+![image](https://github.com/user-attachments/assets/8349d9ca-8502-493a-8629-edb88637f751)
 
 - Пользователь может **посмотреть свой список покупок**:
 
-  ![image](https://github.com/user-attachments/assets/9125628f-9046-4d8a-a4b8-e4cd138eb431)
+![image](https://github.com/user-attachments/assets/be86c9b9-de34-4348-ab41-1fe4703d8307)
 
 - Пользователь может **скачать свой список покупок**:
 
